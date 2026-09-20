@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.dong</groupId>
+  <artifactId>beacon_cloud</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>beacon-api</module>
+      <module>beacon-common</module>
+      <module>beacon-cache</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.11</version>
+    <relativePath />
+  </parent>
+
+  <name>beacon_cloud</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <!-- 指定Java 17编译 -->
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- 版本对齐：SpringBoot 2.6.x 对应 SpringCloud 2021.0.x -->
+    <spring-cloud.version>2021.0.4</spring-cloud.version>
+    <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
+    <horse-version>1.0.0</horse-version>
+  </properties>
+
+  <dependencyManagement>
+    <!--SpringCloud官方提供OpenFeign等标准组件，Alibaba提供Nacos等增强组件，两者互补配合使用-->
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--统一管理了cloud组件版本-->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>com.msb.cloud</groupId>
+        <artifactId>horse-framework-starters</artifactId>
+        <version>${horse-version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- horse-framework 依赖的 spring-boot-dependencies 2.5.6 会把 micrometer 拖到 1.7.5，
+           而本项目使用 Spring Boot 2.6.11（对应 micrometer 1.8.9），1.7.5 缺少
+           io.micrometer.core.instrument.binder.system.DiskSpaceMetrics，导致 actuator 启动失败。
+           这里显式对齐 micrometer 版本。 -->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-core</artifactId>
+        <version>1.8.9</version>
+      </dependency>
+
+
+    </dependencies>
+  </dependencyManagement>
+
+
+</project>
