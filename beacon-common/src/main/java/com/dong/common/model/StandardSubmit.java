@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StandSubmit {
+public class StandardSubmit {
     /**
      * 针对当前短信的唯一标识
      */
@@ -85,6 +85,15 @@ public class StandSubmit {
      * 短信的发送状态， 0-等待ing，1-成功，2-失败
      */
     private int reportState;
+
+    private String apikey;
+
+    private Integer state;
+
+    public void setRealIP(String ip) {
+        this.setClientId(Long.getLong(ip));
+    }
+
 
     // 后续再做封装~~~~
 

@@ -9,6 +9,7 @@
     <module>beacon-api</module>
       <module>beacon-common</module>
       <module>beacon-cache</module>
+      <module>beacon-test</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -38,6 +39,18 @@
   <dependencyManagement>
     <!--SpringCloud官方提供OpenFeign等标准组件，Alibaba提供Nacos等增强组件，两者互补配合使用-->
     <dependencies>
+      <!-- horse-framework 依赖的 spring-boot-dependencies 2.5.6 会把 Spring Framework 拖到 5.3.12，
+           而本项目使用 Spring Boot 2.6.11（对应 Spring Framework 5.3.23），5.3.12 缺少
+           ConfigurableListableBeanFactory.findAnnotationOnBean(String, Class, boolean)，
+           导致启动时 NoSuchMethodError。这里显式对齐 Spring Framework 版本。
+           注意：Maven 的 BOM import 遵循“先声明者优先”，因此本导入必须放在 horse-framework-starters 之前。 -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>5.3.23</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
