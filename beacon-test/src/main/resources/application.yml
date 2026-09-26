@@ -3,10 +3,10 @@ spring:
   application:
     name: beacon-test
   # nacos地址
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 192.168.88.130:8848
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.88.130:8848
   # datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

@@ -18,47 +18,86 @@
     </properties>
 
     <dependencies>
+        <!-- Spring Boot 测试依赖（含 @SpringBootTest、SpringRunner 等） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
+        <!-- Web 依赖（启动内嵌 Tomcat，本模块用不到接口，但会带进 Jackson 做 JSON 转换） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--nacos注册中心-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash;nacos的配置中心&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-<!--        </dependency>-->
-        <!-- data系列的redis依赖-->
+        <!--
+            Nacos 注册中心（服务发现）
+            作用：
+              1. 让 beacon-test 启动时把自己注册到 Nacos；
+              2. 让 OpenFeign 能按服务名 "beacon-cache" 查到缓存模块的真实地址。
+            关键：OpenFeign 只负责“怎么发请求”，它不知道目标服务在哪，
+                  “服务名 -> 地址”的翻译要靠 Nacos 来做，所以必须有这个依赖。
+        -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!--
+            Nacos 配置中心（拉配置）
+            作用：从 Nacos 配置中心拉取配置（配合 spring.config.import / @RefreshScope / @Value 使用）。
+            本模块【不需要】：数据库、mybatis、端口等配置都写在本地 application.yml 里了。
+            所以注释掉。如果以后想让 beacon-test 也从 Nacos 拉配置，再放开它。
+        -->
+        <!--
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        -->
+
+        <!-- data 系列的 redis 依赖（本模块通过 Feign 调缓存模块，实际不直接连 Redis，先保留） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <!-- MySQL 驱动（连数据库查 client_business 等表） -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- MyBatis：用 @Select 注解直接写 SQL 查库 -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.2.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--        </dependency>-->
+        <!--
+            OpenFeign：声明式 HTTP 客户端
+            作用：把 CacheClient 接口里的方法调用，翻译成对 beacon-cache 的 HTTP 请求。
+            注意：它只负责“发请求”，不负责“找地址/选实例”。
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <!--
+            Spring Cloud LoadBalancer：负载均衡器
+            作用：OpenFeign 按服务名调用时，从 Nacos 拿到的实例列表里挑一台（负载均衡）。
+            关键：spring-cloud-starter-openfeign 在 2021.0.x 不再内置负载均衡器，
+                  nacos-discovery 也不会传递进来，所以必须手动加这个依赖。
+                  否则启动会报：No Feign Client for loadBalancing defined.
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <!-- JUnit 4（配合 @RunWith(SpringRunner.class) 跑同步测试） -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

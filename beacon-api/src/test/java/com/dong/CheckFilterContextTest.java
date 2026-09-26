@@ -1,6 +1,7 @@
 package com.dong;
 
 import com.dong.api.filter.CheckFilterContext;
+import com.dong.common.model.StandardSubmit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class CheckFilterContextTest{
 
     @Test
     public void check(){
-        Object obj=new Object();
-        checkFilterContext.check(obj);
+        StandardSubmit  submit=new StandardSubmit();
+        checkFilterContext.check(submit);
     }
 }

@@ -2,12 +2,14 @@ package com.dong.api.controller;
 
 
 import com.dong.api.enums.SmsCodeEnum;
+import com.dong.api.filter.CheckFilterContext;
 import com.dong.api.form.SingleSendForm;
 import com.dong.api.util.R;
 import com.dong.api.vo.ResultVO;
 import com.dong.common.model.StandardSubmit;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Controller;
@@ -43,21 +45,25 @@ public class SmsController {
      */
     private final String X_FORWARDED_FOR = "x-forwarded-for";
 
+    @Autowired
+    private CheckFilterContext checkFilterContext;
+
 
     //produces = "application/json;charset=utf-8"等于告诉 Spring MVC：这个接口的响应体是 JSON，且用 UTF-8 编码
+    //:80 那里有个 nginx/反代指到了 beacon-api
     @PostMapping(value = "/single_send",produces = "application/json;charset=utf-8")
     public ResultVO singleSend(@RequestBody @Validated SingleSendForm singleSendForm, BindingResult bindingResult, HttpServletRequest request){
-        //1. 校验参数
+        //校验参数
         if (bindingResult.hasErrors()){
             String msg = bindingResult.getFieldError().getDefaultMessage();
             log.info("【接口模块-单条短信Controller】 参数不合法 msg = {}",msg);
             return R.error(SmsCodeEnum.PARAMETER_ERROR.getCode(),msg);
         }
 
-        //=========================获取真实的IP地址=========================================
+        //获取真实的IP地址
         String ip = this.getRealIP(request);
 
-        //=========================构建StandardSubmit，各种封装校验=========================================
+        //构建StandardSubmit，各种封装校验
         StandardSubmit submit = new StandardSubmit();
         submit.setRealIP(ip);
         submit.setApikey(singleSendForm.getApikey());
@@ -66,7 +72,10 @@ public class SmsController {
         submit.setState(singleSendForm.getState());
         submit.setUid(singleSendForm.getUid());
 
-        //=========================发送到MQ，交给策略模块处理=========================================
+        //调用策略模式的校验链
+        checkFilterContext.check(submit);
+
+        //发送到MQ，交给策略模块处理
         return R.ok();
     }
 

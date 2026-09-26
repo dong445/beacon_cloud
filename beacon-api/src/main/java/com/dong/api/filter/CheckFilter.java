@@ -1,9 +1,11 @@
 package com.dong.api.filter;
 
+import com.dong.common.model.StandardSubmit;
+
 public interface CheckFilter{
     /**
      * 校验！！！！
-     * @param obj
+     * @param submit
      */
-    void check(Object obj);
+    void check(StandardSubmit submit);
 }

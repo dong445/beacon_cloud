@@ -10,90 +10,44 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StandardSubmit {
-    /**
-     * 针对当前短信的唯一标识
-     */
+    /** 当前短信的全局唯一标识（雪花算法生成） */
     private Long sequenceId;
 
-    /**
-     * 客户端ID
-     */
+    /** 客户ID（apikey 校验后回填） */
     private Long clientId;
 
-    /**
-     * 客户端的ip白名单
-     */
-    private String ip;
-
-    /**
-     * 客户业务内的uid
-     */
-    private String uid;
-
-    /**
-     * 目标手机号
-     */
-    private String mobile;
-
-    /**
-     * 短信内容的签名
-     */
-    private String sign;
-
-    /**
-     * 短信内容
-     */
-    private String text;
-
-    /**
-     * 短信的发送时间
-     */
-    private LocalDateTime sendTime;
-
-    /**
-     * 当前短信的费用
-     */
-    private Long fee;
-
-    /**
-     * 目标手机号的运营商
-     */
-    private Integer operatorId;
-
-
-    /**
-     * 目标手机号的归属地区号  0451  0455
-     */
-    private Integer areaCode;
-
-    /**
-     * 目标手机号的归属地  哈尔滨，  绥化~
-     */
-    private String area;
-
-    /**
-     * 通道下发的源号码  106934985673485645
-     */
-    private String srcNumber;
-
-    /**
-     * 通道的id信息
-     */
-    private Long channelId;
-
-    /**
-     * 短信的发送状态， 0-等待ing，1-成功，2-失败
-     */
-    private int reportState;
-
+    /** 客户请求携带的 apikey */
     private String apikey;
 
-    private Integer state;
+    /** 0-验证码 1-通知类 2-营销类 */
+    private int state;
 
-    public void setRealIP(String ip) {
-        this.setClientId(Long.getLong(ip));
-    }
+    /** 【本次请求】的真实客户端 IP（由请求头解析得到） */
+    private String realIP;
 
+    /** 【客户配置】的 IP 白名单，逗号分隔（IP校验时回填） */
+    private String ip;
+
+    /** 客户业务内的 uid */
+    private String uid;
+
+    /** 目标手机号 */
+    private String mobile;
+
+    /** 短信内容里解析出的签名（签名校验后回填） */
+    private String sign;
+
+    /** 签名ID（签名校验后回填，模板校验要用） */
+    private Long signId;
+
+    /** 短信完整内容，形如：【签名】正文 */
+    private String text;
+
+    /** 短信发送时间 */
+    private LocalDateTime sendTime;
+
+    /** 本条短信费用（余额校验时算出） */
+    private Long fee;
 
     // 后续再做封装~~~~
 

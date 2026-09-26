@@ -12,9 +12,9 @@ public class TestController{
 
     @GetMapping("/api/test")
     public void test(){
-//接口的 void 返回值让 Spring 去找名为 api/test 的视图，项目里没有视图解析器，所以 404
+        //接口的 void 返回值让 Spring 去找名为 api/test 的视图，项目里没有视图解析器，所以 404
         //程序本身没错
         System.out.println("====================================");
-        checkFilterContext.check(new Object());
+        //checkFilterContext.check(new Object());
     }
 }
