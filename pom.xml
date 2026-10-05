@@ -10,6 +10,7 @@
       <module>beacon-common</module>
       <module>beacon-cache</module>
       <module>beacon-test</module>
+      <module>beacon-strategy</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -84,6 +85,7 @@
         <artifactId>micrometer-core</artifactId>
         <version>1.8.9</version>
       </dependency>
+
 
 
     </dependencies>

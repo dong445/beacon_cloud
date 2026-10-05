@@ -4,12 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StandardSubmit {
+public class StandardSubmit implements Serializable {
     /** 当前短信的全局唯一标识（雪花算法生成） */
     private Long sequenceId;
 
@@ -48,6 +49,43 @@ public class StandardSubmit {
 
     /** 本条短信费用（余额校验时算出） */
     private Long fee;
+
+
+    /**
+     * 目标手机号的运营商（策略模块）
+     */
+    private Integer operatorId;
+
+
+    /**
+     * 目标手机号的归属地区号  0451  0455 （策略模块，三方查询不到，先不管）
+     */
+    private Integer areaCode;
+
+    /**
+     * 目标手机号的归属地  哈尔滨，  绥化~   （策略模块）
+     */
+    private String area;
+
+    /**
+     * 通道下发的源号码  106934985673485645  （策略模块）
+     */
+    private String srcNumber;
+
+    /**
+     * 通道的id信息   （策略模块）
+     */
+    private Long channelId;
+
+    /**
+     * 短信的发送状态， 0-等待/发送ing，1-成功，2-失败 ，默认情况就是0
+     */
+    private int reportState;
+
+    /**
+     * 短信发送失败的原因是什么，记录在当前属性
+     */
+    private String errorMsg;
 
     // 后续再做封装~~~~
 

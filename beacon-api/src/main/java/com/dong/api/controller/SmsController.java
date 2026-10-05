@@ -6,9 +6,13 @@ import com.dong.api.filter.CheckFilterContext;
 import com.dong.api.form.SingleSendForm;
 import com.dong.api.util.R;
 import com.dong.api.vo.ResultVO;
+import com.dong.common.constant.RabbitMQConstants;
 import com.dong.common.model.StandardSubmit;
+import com.dong.common.util.SnowFlakeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -22,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/sms")
@@ -47,6 +52,12 @@ public class SmsController {
 
     @Autowired
     private CheckFilterContext checkFilterContext;
+
+    @Autowired
+    private SnowFlakeUtil snowFlakeUtil;
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
 
 
     //produces = "application/json;charset=utf-8"等于告诉 Spring MVC：这个接口的响应体是 JSON，且用 UTF-8 编码
@@ -74,6 +85,18 @@ public class SmsController {
 
         //调用策略模式的校验链
         checkFilterContext.check(submit);
+
+
+        //基于雪花算法生成唯一id，并添加到StandardSubmit对象中
+        Long id=snowFlakeUtil.nextId();
+        submit.setSequenceId(id);
+        submit.setSendTime(LocalDateTime.now());
+        log.info(String.valueOf(id));
+
+
+        //发送到MQ，交给策略模块处理
+        // 默认交换机根据 routingKey = RabbitMQConstants.SMS_PRE_SEND
+        rabbitTemplate.convertAndSend(RabbitMQConstants.SMS_PRE_SEND,submit,new CorrelationData(submit.getSequenceId().toString()));
 
         //发送到MQ，交给策略模块处理
         return R.ok();
