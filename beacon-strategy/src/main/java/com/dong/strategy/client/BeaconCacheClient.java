@@ -28,4 +28,8 @@ public interface BeaconCacheClient {
     //取 Set 的全部成员
     @GetMapping("/cache/smember/{key}")
     Set smember(@PathVariable String key);
+
+    @GetMapping("/cache/hget/{key}/{field}")
+    Integer hgetInteger(@PathVariable(value = "key")String key, @PathVariable(value = "field")String field);
+
 }

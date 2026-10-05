@@ -87,6 +87,12 @@ public class StandardSubmit implements Serializable {
      */
     private String errorMsg;
 
+    /**
+     * 是否携号转网，  isTransfer = true，代表做了携号转网的判断并且做了操作
+     */
+    private Boolean isTransfer = false;
+
+
     // 后续再做封装~~~~
 
 }

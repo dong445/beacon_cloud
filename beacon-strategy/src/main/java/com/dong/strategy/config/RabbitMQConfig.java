@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+//运行中手动删了队列，队列不会自动重建，消息会静默丢失。重启项目即可恢复
 public class RabbitMQConfig {
 
    //告诉 RabbitMQ，发消息时把 Java 对象转成 JSON 字符串，收消息时把 JSON 字符串转回 Java 对象

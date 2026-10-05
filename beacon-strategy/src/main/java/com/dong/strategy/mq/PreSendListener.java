@@ -33,6 +33,9 @@ public class PreSendListener{
             channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
         } catch (StrategyException e) {
             log.error("【策略模块-消费失败】 检验未通过，msg={}",e.getMessage());
+            // 校验失败是正常业务结果，已经写过日志、推过报告，这条消息不应再重放
+            // 这个代码主要是为了让重启项目时，不再让sms_pre_send_topic队列的unack的消息重新跑一趟队列，增加消息
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         }
 
     }
