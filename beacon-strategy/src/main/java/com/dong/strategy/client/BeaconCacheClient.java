@@ -1,10 +1,7 @@
 package com.dong.strategy.client;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -32,4 +29,26 @@ public interface BeaconCacheClient {
     @GetMapping("/cache/hget/{key}/{field}")
     Integer hgetInteger(@PathVariable(value = "key")String key, @PathVariable(value = "field")String field);
 
+    //往 Redis 的某个 ZSet 里插入一条记录
+    //score	发送时间戳	排序依据，供 ZRANGEBYSCORE 查
+    //member	发送时间戳	记录的唯一标识
+    @PostMapping(value = "/cache/zadd/{key}/{score}/{member}")
+    Boolean zadd(@PathVariable(value = "key")String key,
+                        @PathVariable(value = "score")Long score,
+                        @PathVariable(value = "member")Object member);
+
+    //查某个 ZSet 里，score在 [start, end] 范围内的记录有几条
+    @GetMapping(value = "/cache/zrangebyscorecount/{key}/{start}/{end}")
+    int zRangeByScoreCount(@PathVariable(value = "key") String key,
+                                  @PathVariable(value = "start") Double start,
+                                  @PathVariable(value = "end") Double end);
+
+
+    @DeleteMapping(value = "/cache/zremove/{key}/{member}")
+    void zRemove(@PathVariable(value = "key") String key,@PathVariable(value = "member") String member);
+
+    @PostMapping(value = "/cache/hincrby/{key}/{field}/{delta}")
+    Long hIncrBy(@PathVariable(value = "key") String key,
+                        @PathVariable(value = "field") String field,
+                        @PathVariable(value = "delta") Long delta);
 }

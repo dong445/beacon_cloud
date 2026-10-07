@@ -93,6 +93,7 @@ public class StandardSubmit implements Serializable {
     private Boolean isTransfer = false;
 
 
+    private Long oneHourLimitMilli;
     // 后续再做封装~~~~
 
 }
