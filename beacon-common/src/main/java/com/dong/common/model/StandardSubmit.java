@@ -1,5 +1,9 @@
 package com.dong.common.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +15,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StandardSubmit implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /** 当前短信的全局唯一标识（雪花算法生成） */
     private Long sequenceId;
 
@@ -45,6 +52,8 @@ public class StandardSubmit implements Serializable {
     private String text;
 
     /** 短信发送时间 */
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime sendTime;
 
     /** 本条短信费用（余额校验时算出） */

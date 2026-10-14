@@ -17,6 +17,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class StandardReport implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * 针对当前短信的唯一标识，雪花算法（保留）
      */

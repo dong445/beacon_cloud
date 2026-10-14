@@ -45,5 +45,12 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
+
+        <!--使用Jackson时，发现默认情况下，不支持LocalDateTime，需要额外导入依赖并且添加注解-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.12.5</version>
+        </dependency>
     </dependencies>
 </project>

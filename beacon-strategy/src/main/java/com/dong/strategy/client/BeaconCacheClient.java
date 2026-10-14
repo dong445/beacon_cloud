@@ -3,6 +3,7 @@ package com.dong.strategy.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Set;
 
 @FeignClient(value = "beacon-cache")
@@ -51,4 +52,8 @@ public interface BeaconCacheClient {
     Long hIncrBy(@PathVariable(value = "key") String key,
                         @PathVariable(value = "field") String field,
                         @PathVariable(value = "delta") Long delta);
+
+
+    @GetMapping("/cache/hgetall/{key}")
+    public Map hGetAll(@PathVariable(value = "key")String key);
 }
