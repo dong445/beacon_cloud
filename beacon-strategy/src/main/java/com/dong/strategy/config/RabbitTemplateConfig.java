@@ -5,6 +5,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,12 +18,15 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitTemplateConfig {
 
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory){
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter jsonMessageConverter){
         //1、构建RabbitTemplate对象
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
 
         //2、设置connectionFactory
         rabbitTemplate.setConnectionFactory(connectionFactory);
+
+        //2.5、设置消息转换器，与网关模块保持一致使用 JSON，避免默认 Java 序列化导致反序列化失败
+        rabbitTemplate.setMessageConverter(jsonMessageConverter);
 
         //3、配置confirm机制
         rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback(){
