@@ -24,7 +24,7 @@ public class DFAUtil {
      * 初始化敏感词树
      */
     static {
-        // 获取Spring容器中的cacheClient
+        // 获取Spring容器中的cacheClient,静态代码块要用SpringUtil
         BeaconCacheClient cacheClient = (BeaconCacheClient) SpringUtil.getBeanByClass(BeaconCacheClient.class);
         // 获取存储在Redis中的全部敏感词
         Set<String> dirtyWords = cacheClient.smember(CacheConstant.DIRTY_WORD);

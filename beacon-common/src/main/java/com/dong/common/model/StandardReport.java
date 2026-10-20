@@ -23,6 +23,9 @@ public class StandardReport implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    //为了在网关运营商的二次回调中可以方便查询客户的状态报告的推送信息
+    private String apikey;
+
     /**
      * 针对当前短信的唯一标识，雪花算法（保留）
      */

@@ -1,5 +1,18 @@
 # 服务名称
 spring:
+  # 动态线程池连接信息
+  dynamic:
+    thread-pool:
+      # 服务端地址
+      server-addr: 192.168.88.130:6691
+      # 用户名
+      username: admin
+      # 密码
+      password: 123456
+      # 租户 id, 对应 tenant 表
+      namespace: beacon-cloud
+      # 项目 id, 对应 item 表
+      item-id: ${spring.application.name}
   application:
     name: beacon-smsgateway
   # 多环境
