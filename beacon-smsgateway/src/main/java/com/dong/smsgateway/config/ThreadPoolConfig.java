@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class ThreadPoolConfig{
 
-    @Bean
+    @Bean("cmppSubmitPool")
     @DynamicThreadPool // 标记为Hippo4j动态线程池
     public ThreadPoolExecutor messageConsumeDynamicExecutor() {
         String threadPoolId = "cmpp-submit"; // 线程池唯一标识，与Hippo4j Server对应
@@ -25,7 +25,7 @@ public class ThreadPoolConfig{
         return messageConsumeDynamicExecutor;
     }
 
-    @Bean
+    @Bean("cmppDeliverPool")
     @DynamicThreadPool // 标记为Hippo4j动态线程池
     public ThreadPoolExecutor messageProduceDynamicExecutor() {
         String threadPoolId = "cmpp-deliver";
