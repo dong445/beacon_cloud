@@ -38,7 +38,8 @@ public class SmsWriteLogListener {
             try {
                 searchService.index(index, id, json);
                 success = true;
-            } catch (IOException e) {
+            } catch (Exception e) {
+                // 同时捕获 IOException 与 SearchException，保证异常不抛出、最终能走到 ack
                 log.error("【搜索模块-写入失败，第 {} 次重试】 index = {}, id = {}", i, index, id, e);
             }
         }
