@@ -52,8 +52,10 @@ public class SearchServiceImpl implements SearchService {
 
         //校验添加是否成功
         String result = response.getResult().getLowercase();
-        if(!CREATED.equals(result)){
-            // 添加失败！！
+        // created = 该 id 首次写入成功；updated = 该 id 已存在、本次为覆盖写成功（同一个 id 被重复写入时返回）。
+        // 写日志消息可能因超时重试或消息重投被重复处理，此时 ES 会返回 updated，两者都应视为成功；
+        // 只有既不是 created 也不是 updated 时，才是真正的写入失败。
+        if(!CREATED.equals(result) /*&& !UPDATED.equals(result)*/){
             log.error("【搜索模块-写入数据失败】 index = {},id = {},json = {},result = {}",index,id,json,result);
             throw new SearchException(ExceptionEnums.SEARCH_INDEX_ERROR);
         }
