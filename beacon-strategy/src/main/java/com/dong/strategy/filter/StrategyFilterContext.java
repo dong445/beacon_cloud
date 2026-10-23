@@ -26,7 +26,7 @@ public class StrategyFilterContext {
      * 当前check方法用于管理校验链的顺序
      */
     public void strategy(StandardSubmit submit){
-        //1、 基于Redis获取客户对应的校验信息
+        //基于Redis获取客户对应的校验信息
         String filters = cacheClient.hget(CacheConstant.CLIENT_BUSINESS + submit.getApikey(), CLIENT_FILTERS);
 
         //基于逗号分隔遍历
