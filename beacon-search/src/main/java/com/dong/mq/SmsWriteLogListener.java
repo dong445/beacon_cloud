@@ -1,6 +1,7 @@
 package com.dong.mq;
 
 import com.dong.common.constant.RabbitMQConstants;
+import com.dong.common.exception.SearchException;
 import com.dong.common.model.StandardSubmit;
 import com.dong.common.util.JsonUtil;
 import com.dong.service.SearchService;
@@ -37,11 +38,16 @@ public class SmsWriteLogListener {
         for (int i = 1; i <= 3 && !success; i++) {
             try {
                 searchService.index(index, id, json);
+                success = true;
+            } catch (SearchException e) {
+                //限流导致重复写入
+                //文档已存在（重复写），幂等成功，不重试、不记错误
+                log.info("【搜索模块-写入】 文档已存在，视为成功 index = {}, id = {}", index, id);
+                success = true;
             } catch (Exception e) {
-                // 同时捕获 IOException 与 SearchException，保证异常不抛出、最终能走到 ack
+                // 只有其他异常（如 IOException 超时）才重试
                 log.error("【搜索模块-写入失败，第 {} 次重试】 index = {}, id = {}", i, index, id, e);
             }
-            success = true;
         }
         if (!success) {
             // 重试仍失败
