@@ -14,6 +14,8 @@
       <module>beacon-search</module>
       <module>beacon-push</module>
       <module>beacon-smsgateway</module>
+      <module>beacon-monitor</module>
+      <module>beacon-webmaster</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -88,7 +90,6 @@
         <artifactId>micrometer-core</artifactId>
         <version>1.8.9</version>
       </dependency>
-
 
 
     </dependencies>
