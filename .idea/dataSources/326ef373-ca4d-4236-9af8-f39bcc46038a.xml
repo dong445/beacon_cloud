@@ -1,0 +1,1444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="beacon_cloud@192.168.88.130">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.43">
+    <root id="1">
+      <DefaultCasing>exact</DefaultCasing>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
+      <ServerVersion>8.0.24</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="beacon_cloud">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="channel">
+      <Comment>通道表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="8" parent="2" name="client_account_record">
+      <Comment>客户金额流水记录表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="9" parent="2" name="client_balance">
+      <Comment>客户余额表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="10" parent="2" name="client_business">
+      <Comment>客户信息表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="11" parent="2" name="client_channel">
+      <Comment>客户通道表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="12" parent="2" name="client_code_limit">
+      <Comment>客户限流表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="13" parent="2" name="client_sign">
+      <Comment>短信签名认证表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="14" parent="2" name="client_template">
+      <Comment>短信模板</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="15" parent="2" name="code_limit">
+      <Comment>验证码限流表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="16" parent="2" name="mobile_area">
+      <Comment>手机号区域表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="17" parent="2" name="mobile_black">
+      <Comment>手机号黑名单表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="18" parent="2" name="mobile_dirtyword">
+      <Comment>敏感词</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="19" parent="2" name="mobile_empty">
+      <Comment>空号表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="20" parent="2" name="mobile_transfer">
+      <Comment>携号转网表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="21" parent="7" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="22" parent="7" name="channel_name">
+      <Comment>通道名称 如：北京移动、上海联通、深圳电信</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="23" parent="7" name="channel_type">
+      <Comment>通道类型：0-三网 1-移动 2-联通 3-电信</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="24" parent="7" name="channel_area">
+      <Comment>通道地区 如：北京 北京、湖北 荆门</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="25" parent="7" name="channel_area_code">
+      <Comment>地区号段</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="26" parent="7" name="channel_price">
+      <Comment>通道短信成本价格（厘/条）</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="27" parent="7" name="channel_protocal">
+      <Comment>通道协议类型 1-cmpp、2-sgip、3-smgp</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="28" parent="7" name="channel_ip">
+      <Comment>通道IP地址</Comment>
+      <DataType>varchar(128)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="29" parent="7" name="channel_port">
+      <Comment>通道端口号</Comment>
+      <DataType>int|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="30" parent="7" name="channel_username">
+      <Comment>通道账号</Comment>
+      <DataType>varchar(64)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="31" parent="7" name="channel_password">
+      <Comment>通道密码</Comment>
+      <DataType>varchar(64)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="32" parent="7" name="channel__number">
+      <Comment>账户接入号，如1069777、10684376</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="33" parent="7" name="is_available">
+      <Comment>是否启动 0-已停用 1-启用中</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>13</Position>
+    </column>
+    <column id="34" parent="7" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>14</Position>
+    </column>
+    <column id="35" parent="7" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="36" parent="7" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>16</Position>
+    </column>
+    <column id="37" parent="7" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>17</Position>
+    </column>
+    <column id="38" parent="7" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>18</Position>
+    </column>
+    <column id="39" parent="7" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>19</Position>
+    </column>
+    <column id="40" parent="7" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>20</Position>
+    </column>
+    <column id="41" parent="7" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>21</Position>
+    </column>
+    <column id="42" parent="7" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>22</Position>
+    </column>
+    <index id="43" parent="7" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="8" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="46" parent="8" name="client_id">
+      <Comment>客户id，对应client_business表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="47" parent="8" name="paid_value">
+      <Comment>充值金额（单位：厘）</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="48" parent="8" name="paid_state">
+      <Comment>类别 0-充值记录 1-消费记录</Comment>
+      <DataType>tinyint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="49" parent="8" name="paid_info">
+      <Comment>充值记录/消费信息</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="50" parent="8" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="51" parent="8" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="52" parent="8" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>8</Position>
+    </column>
+    <column id="53" parent="8" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="54" parent="8" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="55" parent="8" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="56" parent="8" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="57" parent="8" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="58" parent="8" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <index id="59" parent="8" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="9" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="62" parent="9" name="client_id">
+      <Comment>客户id，对应client_business表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="63" parent="9" name="balance">
+      <Comment>用户余额（单位：厘）</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="64" parent="9" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="65" parent="9" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <column id="66" parent="9" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>6</Position>
+    </column>
+    <column id="67" parent="9" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="68" parent="9" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="69" parent="9" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="70" parent="9" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="71" parent="9" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="72" parent="9" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <index id="73" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="75" parent="10" name="id">
+      <DataType>bigint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="76" parent="10" name="corpname">
+      <Comment>公司名</Comment>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="77" parent="10" name="apikey">
+      <Comment>HTTP接入的密码</Comment>
+      <DataType>varchar(64)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="78" parent="10" name="ip_address">
+      <Comment>HTTP客户端的IP白名单（多个用,隔开）</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="79" parent="10" name="is_callback">
+      <Comment>状态报告是否返回：0 不返回 1 返回</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="80" parent="10" name="callback_url">
+      <Comment>客户接收状态报告的URL地址</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="81" parent="10" name="client_linkname">
+      <Comment>联系人</Comment>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="82" parent="10" name="client_phone">
+      <Comment>密保手机</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="83" parent="10" name="client_filters">
+      <Comment>策略校验顺序动态实现规则</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="84" parent="10" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="85" parent="10" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="86" parent="10" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>12</Position>
+    </column>
+    <column id="87" parent="10" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="88" parent="10" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>14</Position>
+    </column>
+    <column id="89" parent="10" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="90" parent="10" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <column id="91" parent="10" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>17</Position>
+    </column>
+    <column id="92" parent="10" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>18</Position>
+    </column>
+    <index id="93" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="94" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="95" parent="11" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="96" parent="11" name="client_id">
+      <Comment>客户id，对应client_business表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="97" parent="11" name="channel_id">
+      <Comment>通道id，对应channel表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="98" parent="11" name="client_channel_weight">
+      <Comment>通道权重</Comment>
+      <DataType>int|0s</DataType>
+      <DefaultExpression>500</DefaultExpression>
+      <Position>4</Position>
+    </column>
+    <column id="99" parent="11" name="client_channel_price">
+      <Comment>客户通道短信价格（厘/条）</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="100" parent="11" name="client_channel_number">
+      <Comment>下发扩展号 如：通道接入号为1069886，后面可以扩展数字，最长不超过20位</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="101" parent="11" name="is_available">
+      <Comment>是否启动 0-启用中 1-已停用</Comment>
+      <DataType>tinyint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="102" parent="11" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="103" parent="11" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="104" parent="11" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>10</Position>
+    </column>
+    <column id="105" parent="11" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="106" parent="11" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="107" parent="11" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="108" parent="11" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="109" parent="11" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="110" parent="11" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <index id="111" parent="11" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="112" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="113" parent="12" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="114" parent="12" name="client_id">
+      <Comment>客户id，对应client_business表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="115" parent="12" name="limit_id">
+      <Comment>限流id，对应code_limit表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="116" parent="12" name="is_available">
+      <Comment>是否启动 0-已停用 1-启用中</Comment>
+      <DataType>tinyint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="117" parent="12" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="118" parent="12" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="119" parent="12" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>7</Position>
+    </column>
+    <column id="120" parent="12" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="121" parent="12" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="122" parent="12" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="123" parent="12" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="124" parent="12" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="125" parent="12" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <index id="126" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="127" parent="12" name="unique_client_code">
+      <ColNames>client_id
+limit_id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="128" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="129" parent="12" name="unique_client_code">
+      <UnderlyingIndexName>unique_client_code</UnderlyingIndexName>
+    </key>
+    <column id="130" parent="13" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="131" parent="13" name="client_id">
+      <Comment>客户id，对应client_business表</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="132" parent="13" name="sign_info">
+      <Comment>短信签名内容</Comment>
+      <DataType>varchar(16)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="133" parent="13" name="sign_state">
+      <Comment>审核是否通过 0-审核中 1-审核不通过 2-审核已通过</Comment>
+      <DataType>int|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="134" parent="13" name="sign_type">
+      <Comment>模板类型 0-验证码，通知类，1-营销类</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="135" parent="13" name="business_web">
+      <Comment>业务网址与场景</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="136" parent="13" name="prove_descr">
+      <Comment>证明文件描述 如：公司营业执照，APP：应用商店APP管理后台截屏，网站名：ICP备案证明，公众号、小程序：微信公众平台管理页面截图，商标：商标注册证书、商标软著权</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="137" parent="13" name="prove_file">
+      <Comment>证明文件图片链接，多个以,隔开</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="138" parent="13" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="139" parent="13" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="140" parent="13" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>11</Position>
+    </column>
+    <column id="141" parent="13" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="142" parent="13" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>13</Position>
+    </column>
+    <column id="143" parent="13" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="144" parent="13" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="145" parent="13" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <column id="146" parent="13" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>17</Position>
+    </column>
+    <index id="147" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="148" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="149" parent="14" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="150" parent="14" name="sign_id">
+      <Comment>签名id，对应client_sign</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="151" parent="14" name="template_text">
+      <Comment>模板内容</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="152" parent="14" name="template_type">
+      <Comment>模板类型 0-验证码类，1-通知类，2-营销类</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="153" parent="14" name="template_state">
+      <Comment>审核是否通过 0-审核中 1-审核不通过 2-审核已通过</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="154" parent="14" name="use_id">
+      <Comment>使用场景 0-网站 1-APP 2-微信</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="155" parent="14" name="use_web">
+      <Comment>网站地址（防轰炸，验证码截图）</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="156" parent="14" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="157" parent="14" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="158" parent="14" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>10</Position>
+    </column>
+    <column id="159" parent="14" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="160" parent="14" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="161" parent="14" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="162" parent="14" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="163" parent="14" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="164" parent="14" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <index id="165" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="166" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="167" parent="15" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="168" parent="15" name="limit_time">
+      <Comment>限制的时间间隔（单位：秒）</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="169" parent="15" name="limit_count">
+      <Comment>限制的短信条数</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="170" parent="15" name="description">
+      <Comment>限流规则描述</Comment>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="171" parent="15" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="172" parent="15" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="173" parent="15" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>7</Position>
+    </column>
+    <column id="174" parent="15" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="175" parent="15" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="176" parent="15" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="177" parent="15" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="178" parent="15" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="179" parent="15" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <index id="180" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="181" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="182" parent="16" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="183" parent="16" name="mobile_number">
+      <Comment>手机号前7位</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="184" parent="16" name="mobile_area">
+      <Comment>手机号区域</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="185" parent="16" name="mobile_type">
+      <Comment>手机号运营商</Comment>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="186" parent="16" name="area_code">
+      <Comment>地区号段</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="187" parent="16" name="post_code">
+      <Comment>地区邮箱</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="188" parent="16" name="province_code">
+      <Comment>省号段</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <Position>7</Position>
+    </column>
+    <column id="189" parent="16" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="190" parent="16" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="191" parent="16" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>10</Position>
+    </column>
+    <column id="192" parent="16" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="193" parent="16" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="194" parent="16" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="195" parent="16" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="196" parent="16" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="197" parent="16" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <index id="198" parent="16" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="199" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="200" parent="17" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="201" parent="17" name="black_number">
+      <Comment>黑名单手机号</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="202" parent="17" name="black_type">
+      <Comment>录入方式 0-手动导入 1-第三方API 2-用户退订</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="203" parent="17" name="client_id">
+      <Comment>黑名单类型 0-全局黑名单  其他-客户黑名单</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="204" parent="17" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="205" parent="17" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="206" parent="17" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>7</Position>
+    </column>
+    <column id="207" parent="17" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="208" parent="17" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="209" parent="17" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="210" parent="17" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="211" parent="17" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="212" parent="17" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <index id="213" parent="17" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="214" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="215" parent="18" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="216" parent="18" name="dirtyword">
+      <Comment>敏感词</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="217" parent="18" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="218" parent="18" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="219" parent="18" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>5</Position>
+    </column>
+    <column id="220" parent="18" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="221" parent="18" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="222" parent="18" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="223" parent="18" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="224" parent="18" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="225" parent="18" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <index id="226" parent="18" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="227" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="228" parent="19" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="229" parent="19" name="empty_number">
+      <Comment>空号手机</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="230" parent="19" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="231" parent="19" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="232" parent="19" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>5</Position>
+    </column>
+    <column id="233" parent="19" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="234" parent="19" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="235" parent="19" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="236" parent="19" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="237" parent="19" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="238" parent="19" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <index id="239" parent="19" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="240" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="241" parent="20" name="id">
+      <Comment>主键</Comment>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="242" parent="20" name="transfer_number">
+      <Comment>手机号</Comment>
+      <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="243" parent="20" name="area_code">
+      <Comment>区域</Comment>
+      <DataType>varchar(64)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="244" parent="20" name="init_isp">
+      <Comment>最初归属运营商 1-移动 2-联通 3-电信</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="245" parent="20" name="now_isp">
+      <Comment>转网后运营商 1-移动 2-联通 3-电信</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="246" parent="20" name="is_transfer">
+      <Comment>是否转网 0-未转网 1-已转网</Comment>
+      <DataType>tinyint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="247" parent="20" name="created">
+      <Comment>创建时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="248" parent="20" name="create_id">
+      <Comment>创建人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="249" parent="20" name="updated">
+      <Comment>修改时间，默认系统时间</Comment>
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
+      <Position>9</Position>
+    </column>
+    <column id="250" parent="20" name="update_id">
+      <Comment>修改人id</Comment>
+      <DataType>bigint|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="251" parent="20" name="is_delete">
+      <Comment>是否删除 0-未删除 ， 1-已删除</Comment>
+      <DataType>tinyint|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>11</Position>
+    </column>
+    <column id="252" parent="20" name="extend1">
+      <Comment>备用字段1</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="253" parent="20" name="extend2">
+      <Comment>备用字段2</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="254" parent="20" name="extend3">
+      <Comment>备用字段3</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="255" parent="20" name="extend4">
+      <Comment>备用字段4</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <index id="256" parent="20" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="257" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

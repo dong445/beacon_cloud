@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="beacon_cloud@localhost">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.43">
+    <root id="1">
+      <DefaultCasing>lower/lower</DefaultCasing>
+      <ServerVersion>8.0.41</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="beacon_cloud">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="data1"/>
+    <schema id="4" parent="1" name="dongconn"/>
+    <schema id="5" parent="1" name="easypoi"/>
+    <schema id="6" parent="1" name="hejiayun"/>
+    <schema id="7" parent="1" name="information_schema"/>
+    <schema id="8" parent="1" name="mydb"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="rabbitmq"/>
+    <schema id="12" parent="1" name="security_example"/>
+    <schema id="13" parent="1" name="select_test"/>
+    <schema id="14" parent="1" name="spring-security"/>
+    <schema id="15" parent="1" name="spring6"/>
+    <schema id="16" parent="1" name="spring_security"/>
+    <schema id="17" parent="1" name="sys"/>
+    <schema id="18" parent="1" name="t"/>
+    <schema id="19" parent="1" name="test"/>
+    <schema id="20" parent="1" name="world"/>
+    <schema id="21" parent="1" name="world2"/>
+  </database-model>
+</dataSource>

@@ -1,0 +1,18 @@
+- generic [ref=f3e2]:
+  - generic [ref=f3e3]: 烽火云短信平台
+  - generic [ref=f3e4]:
+    - paragraph [ref=f3e5]: 用户登录
+    - generic [ref=f3e6]:
+      - textbox "账号" [ref=f3e7]
+      - generic: 
+    - generic [ref=f3e8]:
+      - textbox "密码" [ref=f3e9]
+      - generic: 
+    - generic [ref=f3e10]:
+      - textbox "验证码" [ref=f3e11]
+      - generic: 
+    - generic [ref=f3e12]:
+      - img "如果看不清楚，请单击图片刷新！" [ref=f3e13] [cursor=pointer]
+      - link "点击刷新" [ref=f3e14] [cursor=pointer]:
+        - /url: javascript:;
+    - button "登录" [ref=f3e18] [cursor=pointer]

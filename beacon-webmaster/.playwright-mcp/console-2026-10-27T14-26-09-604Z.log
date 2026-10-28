@@ -1,0 +1,10 @@
+[     168ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ http://localhost:8888/sys/menu/user?_1793111169757&_=1793111169744:0
+[     169ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ http://localhost:8888/sys/user/info?_1793111169760&_=1793111169745:0
+[     182ms] [ERROR] Refused to display 'http://localhost:8888/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
+[     271ms] [VERBOSE] [DOM] Password field is not contained in a form: (More info: https://goo.gl/9p2vKq) %o @ http://localhost:8888/login.html:0
+[     339ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ http://localhost:8888/favicon.ico:0
+[   36007ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://localhost:8888/index.html:0
+[   36025ms] [ERROR] Refused to display 'http://localhost:8888/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
+[   39787ms] [ERROR] Refused to display 'http://localhost:8888/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
+[   40325ms] [ERROR] Refused to display 'http://localhost:8888/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
+[   40761ms] [ERROR] Refused to display 'http://localhost:8888/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
