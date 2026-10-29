@@ -1,9 +1,6 @@
 package com.dong.common.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -51,9 +48,13 @@ public class StandardSubmit implements Serializable {
     /** 短信完整内容，形如：【签名】正文 */
     private String text;
 
-    /** 短信发送时间 */
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    /**
+     * 短信发送时间。
+     * 必须用 @JsonFormat 输出 "yyyy-MM-dd HH:mm:ss" 字符串，不能用 LocalDateTimeSerializer 默认序列化：
+     * 默认会输出数组 [年,月,日,时,分,秒,纳秒]，而 ES 里 sendTime 是 date 类型，
+     * ES 会把数组的每个元素当成 epoch_millis 解析，导致时间全变成 1970 年的脏数据。
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime sendTime;
 
     /** 本条短信费用（余额校验时算出） */

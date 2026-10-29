@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f778a983-1e23-42de-bec8-c9bd5002bf63" name="Changes" comment="后台管理模块03">
+    <list default="true" id="f778a983-1e23-42de-bec8-c9bd5002bf63" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/controller/SearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/client/SearchClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/SysMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/SysMenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/service/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/model/StandardSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/model/StandardSubmit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/util/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/util/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/SearchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/impl/SearchServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-webmaster/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/ClientBusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/ClientBusinessController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +72,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "115632266fea4c174751567c6113f8d8"
+    "spring.configuration.checksum": "3f131efa060816a338819bba81fa3c45"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -105,35 +111,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.WebMasterStarterApp">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.dong.App" />
-      <module name="beacon-webmaster" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dong.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ClientBusinessMapperTest.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="beacon-test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.dong.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.dong.test" />
-      <option name="MAIN_CLASS_NAME" value="com.dong.test.ClientBusinessMapperTest" />
-      <option name="METHOD_NAME" value="findById" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MonitorStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="beacon-monitor" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.MonitorStarterApp" />
@@ -160,6 +137,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SmsGatewayStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="beacon-smsgateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.smsgateway.SmsGatewayStarterApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dong.smsgateway.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrategyStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="beacon-strategy" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.StrategyStarterApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dong.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WebMasterStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="beacon-webmaster" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.WebMasterStarterApp" />
@@ -176,10 +179,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.WebMasterStarterApp" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="Spring Boot.MonitorStarterApp" />
-        <item itemvalue="JUnit.ClientBusinessMapperTest.findById" />
         <item itemvalue="Spring Boot.SearchStarterApp" />
+        <item itemvalue="Spring Boot.SmsGatewayStarterApp" />
+        <item itemvalue="Spring Boot.StrategyStarterApp" />
+        <item itemvalue="Spring Boot.MonitorStarterApp" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +224,7 @@
       <workItem from="1792911451179" duration="7631000" />
       <workItem from="1792997015328" duration="2682000" />
       <workItem from="1793016809997" duration="38574000" />
+      <workItem from="1793187667421" duration="10371000" />
     </task>
     <task id="LOCAL-00001" summary="实现检验链">
       <created>1789907377721</created>
@@ -341,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1793183213078</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="后台管理模块04">
+      <created>1793183665402</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1793183665402</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,6 +376,7 @@
     <MESSAGE value="后台管理模块" />
     <MESSAGE value="后台管理模块02" />
     <MESSAGE value="后台管理模块03" />
-    <option name="LAST_COMMIT_MESSAGE" value="后台管理模块03" />
+    <MESSAGE value="后台管理模块04" />
+    <option name="LAST_COMMIT_MESSAGE" value="后台管理模块04" />
   </component>
 </project>

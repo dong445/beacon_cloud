@@ -30,4 +30,6 @@ public interface SearchService {
      * @throws IOException
      */
     void update(String index, String id, Map<String,Object> doc)throws IOException;
+
+    Map<String, Object> findSmsByParameters(Map<String, Object> parameters) throws IOException;
 }
