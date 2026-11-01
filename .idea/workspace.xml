@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f778a983-1e23-42de-bec8-c9bd5002bf63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/controller/SearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/client/SearchClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/SearchController.java" afterDir="false" />
+    <list default="true" id="f778a983-1e23-42de-bec8-c9bd5002bf63" name="Changes" comment="后台管理模块完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/model/StandardSubmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/model/StandardSubmit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/util/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-common/src/main/java/com/dong/common/util/JsonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-search/src/main/java/com/dong/service/impl/SearchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-webmaster/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/ClientBusinessController.java" beforeDir="false" afterPath="$PROJECT_DIR$/beacon-webmaster/src/main/java/com/dong/controller/ClientBusinessController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +57,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "17 (3)",
-    "last_opened_file_path": "D:/JAVA-CODE/beacon_cloud/beacon-webmaster/src/main/java/com/dong",
+    "last_opened_file_path": "D:/JAVA-CODE/heijiayun_work",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -110,10 +101,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebMasterStarterApp">
-    <configuration name="MonitorStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="beacon-monitor" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.MonitorStarterApp" />
+  <component name="RunManager" selected="Spring Boot.CacheStarterApp">
+    <configuration name="CacheStarterApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="beacon-cache" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.dong.CacheStarterApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.dong.*" />
@@ -180,9 +171,9 @@
       <list>
         <item itemvalue="Spring Boot.WebMasterStarterApp" />
         <item itemvalue="Spring Boot.SearchStarterApp" />
+        <item itemvalue="Spring Boot.CacheStarterApp" />
         <item itemvalue="Spring Boot.SmsGatewayStarterApp" />
         <item itemvalue="Spring Boot.StrategyStarterApp" />
-        <item itemvalue="Spring Boot.MonitorStarterApp" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +215,9 @@
       <workItem from="1792911451179" duration="7631000" />
       <workItem from="1792997015328" duration="2682000" />
       <workItem from="1793016809997" duration="38574000" />
-      <workItem from="1793187667421" duration="10371000" />
+      <workItem from="1793187667421" duration="11795000" />
+      <workItem from="1793275092516" duration="2484000" />
+      <workItem from="1793543789606" duration="1409000" />
     </task>
     <task id="LOCAL-00001" summary="实现检验链">
       <created>1789907377721</created>
@@ -352,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1793183665402</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="后台管理模块完成">
+      <created>1793250901084</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1793250901084</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +377,7 @@
     <MESSAGE value="后台管理模块02" />
     <MESSAGE value="后台管理模块03" />
     <MESSAGE value="后台管理模块04" />
-    <option name="LAST_COMMIT_MESSAGE" value="后台管理模块04" />
+    <MESSAGE value="后台管理模块完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="后台管理模块完成" />
   </component>
 </project>
